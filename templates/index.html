@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>ETL Normalizador</title>
+</head>
+
+<body>
+
+    <h1>Normalizador ETL</h1>
+
+    <form action="/" method="POST" enctype="multipart/form-data">
+
+        <input type="file" name="archivo" required>
+
+        <button type="submit">
+            Procesar
+        </button>
+
+    </form>
+
+    <hr>
+
+    <p>{{ mensaje }}</p>
+
+    <table border="1">
+
+        <tr>
+            <th>Original</th>
+            <th>Normalizado</th>
+        </tr>
+
+        {% for fila in datos %}
+
+        <tr>
+            <td>{{ fila[0] }}</td>
+            <td>{{ fila[1] }}</td>
+        </tr>
+
+        {% endfor %}
+
+    </table>
+
+</body>
+
+</html>
