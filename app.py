@@ -8,6 +8,11 @@ import os
 # cargar variables .env
 load_dotenv()
 
+print("HOST:", os.getenv("MYSQLHOST"))
+print("PORT:", os.getenv("MYSQLPORT"))
+print("USER:", os.getenv("MYSQLUSER"))
+print("DB:", os.getenv("MYSQLDATABASE"))
+
 app = Flask(__name__)
 
 # conexion mysql
