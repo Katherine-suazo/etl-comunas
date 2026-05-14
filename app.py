@@ -136,7 +136,7 @@ def index():
             cursor.execute("""
             SELECT nombre_original, nombre_normalizado
             FROM COMUNAS_NORM
-            LIMIT 20
+            LIMIT 100
             """)
 
             datos = cursor.fetchall()
