@@ -156,13 +156,13 @@ def index():
             mensaje = f"""
             Proceso terminado.
 
-            Total registros archivo: {total_original}
+            - Total registros archivo: {total_original}
 
-            Registros procesados: {len(lineas)}
+            - Registros procesados: {len(lineas)}
 
-            Insertados: {insertados}
+            - Insertados: {insertados}
 
-            Duplicados eliminados: {duplicados}
+            - Duplicados eliminados: {duplicados}
             """
 
             # cerrar conexion
