@@ -45,6 +45,9 @@ def index():
 
     if request.method == "POST":
 
+        connection = None
+        cursor = None
+
         try:
 
             archivo = request.files["archivo"]
@@ -52,30 +55,32 @@ def index():
             # validar archivo
             if archivo.filename == "":
                 mensaje = "Debe seleccionar un archivo."
+
                 return render_template(
                     "index.html",
                     mensaje=mensaje,
                     datos=datos
                 )
 
-            # intentar utf-8 primero
+            # intentar UTF-8 primero
             try:
+
                 contenido = archivo.read().decode("utf-8")
 
             except:
+
                 archivo.seek(0)
                 contenido = archivo.read().decode("latin-1")
 
-            # obtener lineas completas
+            # obtener lineas
             lineas_completas = contenido.splitlines()
 
-            # total real del archivo
             total_original = len(lineas_completas)
 
             # limitar procesamiento
             lineas = lineas_completas[:100]
 
-            # nueva conexion mysql
+            # conexion mysql
             connection = conectar_db()
             cursor = connection.cursor()
 
@@ -97,7 +102,7 @@ def index():
             )
             """)
 
-            # limpiar tablas para pruebas
+            # limpiar tablas
             cursor.execute("DELETE FROM COMUNAS_NORM")
             cursor.execute("DELETE FROM LOG_CAMBIOS")
 
@@ -110,13 +115,6 @@ def index():
                     continue
 
                 original, normalizado = normalizar(linea)
-
-                # guardar log txt
-                with open("etl_log.txt", "a", encoding="utf-8") as log:
-                    log.write(
-                        f"{datetime.now()} | "
-                        f"{original} -> {normalizado}\n"
-                    )
 
                 try:
 
@@ -143,6 +141,7 @@ def index():
                     print("DUPLICADO:", e)
                     duplicados += 1
 
+            # guardar cambios
             connection.commit()
 
             # obtener datos insertados
@@ -152,6 +151,26 @@ def index():
             """)
 
             datos = cursor.fetchall()
+
+            # crear log NUEVO (borra el anterior)
+            with open("etl_log.txt", "w", encoding="utf-8") as log:
+
+                log.write("\n")
+                log.write("=" * 50 + "\n")
+                log.write("REGISTRO ETL\n")
+                log.write("=" * 50 + "\n\n")
+
+                log.write(f"Fecha: {datetime.now()}\n")
+                log.write(f"Archivo: {archivo.filename}\n")
+                log.write(f"Registros archivo: {total_original}\n")
+                log.write(f"Registros procesados: {len(lineas)}\n")
+                log.write(f"Insertados: {insertados}\n")
+                log.write(f"Duplicados eliminados: {duplicados}\n\n")
+
+                log.write("- Archivo leído correctamente\n")
+                log.write("- Limpieza aplicada\n")
+                log.write("- Normalización completada\n")
+                log.write("- Datos guardados en MySQL\n")
 
             mensaje = f"""
             Proceso terminado.
@@ -165,14 +184,19 @@ def index():
             - Duplicados eliminados: {duplicados}
             """
 
-            # cerrar conexion
-            cursor.close()
-            connection.close()
-
         except Exception as e:
 
             mensaje = f"Error: {str(e)}"
             print("ERROR GENERAL:", e)
+
+        finally:
+
+            # cerrar conexion
+            if cursor:
+                cursor.close()
+
+            if connection:
+                connection.close()
 
     return render_template(
         "index.html",
