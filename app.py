@@ -97,6 +97,14 @@ def index():
 
                 original, normalizado = normalizar(linea)
 
+                # Guardar en archivo log
+                with open("etl_log.txt", "a", encoding="utf-8") as log:
+                    log.write(
+                        f"{datetime.now()} | "
+                        f"{original} -> {normalizado}\n"
+                    )
+
+
                 try:
 
                     cursor.execute("""
@@ -119,7 +127,7 @@ def index():
 
                 except Exception as e:
 
-                    print("ERROR DUPLICADO:", e)
+                    print("DUPLICADO:", e)
                     duplicados += 1
 
             connection.commit()
