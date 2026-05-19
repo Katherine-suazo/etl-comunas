@@ -2,7 +2,9 @@
 <html>
 
 <head>
+
     <title>ETL Normalizador</title>
+
 </head>
 
 <body>
@@ -24,21 +26,41 @@
     <p>{{ mensaje }}</p>
 
     <a href="/descargar-log">
-    <button>Descargar Log</button>
+
+        <button>
+            Descargar Log
+        </button>
+
     </a>
+
+    <br><br>
 
     <table border="1">
 
+        {% if encabezados %}
+
         <tr>
-            <th>Original</th>
-            <th>Normalizado</th>
+
+            {% for encabezado in encabezados %}
+
+            <th>{{ encabezado }}</th>
+
+            {% endfor %}
+
         </tr>
+
+        {% endif %}
 
         {% for fila in datos %}
 
         <tr>
-            <td>{{ fila[0] }}</td>
-            <td>{{ fila[1] }}</td>
+
+            {% for valor in fila %}
+
+            <td>{{ valor }}</td>
+
+            {% endfor %}
+
         </tr>
 
         {% endfor %}
