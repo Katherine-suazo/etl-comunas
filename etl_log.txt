@@ -1,39 +1,67 @@
-==================================================
+
 REGISTRO ETL
-==================================================
-Fecha: 2026-05-19 12:12:23.241306
+Fecha: 2026-05-20 01:04:19.449870
 Archivo: datos-2-2026.txt
-Insertados: 68
-Duplicados/Error: 0
+Registros archivo: 97
+Procesados: 97
+Insertados: 53
+Duplicados: 44
 
-==================================================
-REGISTRO ETL
-==================================================
-Fecha: 2026-05-19 12:28:06.167048
-Archivo: datos-2-2026.txt
-Insertados: 68
-Duplicados/Error: 0
 
-==================================================
-REGISTRO ETL
-==================================================
-Fecha: 2026-05-19 12:34:22.292450
-Archivo: datos-3-2026.txt
-Insertados: 89
-Duplicados/Error: 0
+TABLA PERSONAS
 
-==================================================
-REGISTRO ETL
-==================================================
-Fecha: 2026-05-19 12:36:05.787296
-Archivo: datos-2-2026.txt
-Insertados: 68
-Duplicados/Error: 0
+ID   NOMBRE                        FECHA          EDAD      CUMPLE
+897  William Shakespeare           23-04-1564     462       0
+898  Albert Einstein               14-03-1879     147       0
+899  Nelson Mandela                18-07-1918     107       0
+900  Isaac Newton                  25-12-1642     383       0
+901  Leonardo da Vinci             15-04-1452     574       0
+902  Mahatma Gandhi                02-10-1869     156       0
+903  Alexander Graham Bell         03-03-1847     179       0
+904  Marie Curie                   07-11-1867     158       0
+905  Martin Luther King Jr.        15-01-1929     97        0
+906  George Washington             22-02-1732     294       0
+907  Queen Elizabeth II            21-04-1926     100       0
+908  Napoleon Bonaparte            15-08-1769     256       0
+909  Galileo Galilei               15-02-1564     462       0
+910  Beethoven                     17-12-1770     255       0
+911  Winston Churchill             30-11-1874     151       0
+912  Joan of Arc                   06-01-1412     614       0
+913  Pablo Picasso                 25-10-1881     144       0
+914  Sigmund Freud                 06-05-1856     170       0
+915  Ernest Hemingway              21-07-1899     126       0
+916  Amelia Earhart                24-07-1897     128       0
+917  Vincent van Gogh              30-03-1853     173       0
+918  Michelangelo                  06-03-1475     551       0
+919  Charles Darwin                12-02-1809     217       0
+920  Abraham Lincoln               12-02-1809     217       0
+921  Anne Frank                    12-06-1929     96        0
+922  Mozart                        27-01-1756     270       0
+923  Coco Chanel                   19-08-1883     142       0
+924  Queen Victoria                24-05-1819     206       0
+925  Rosa Parks                    04-02-1913     113       0
+926  John F. Kennedy               29-05-1917     108       0
+927  Frida Kahlo                   06-07-1907     118       0
+928  Isaac Asimov                  02-01-1920     106       0
+929  Edgar Allan Poe               19-01-1809     217       0
+930  Joan Miró                     20-04-1893     133       0
+931  Jane Austen                   16-12-1775     250       0
+932  Neil Armstrong                05-08-1930     95        0
+933  Christopher Columbus          31-10-1451     574       0
+934  Mother Teresa                 26-08-1910     115       0
+935  Che Guevara                   14-06-1928     97        0
+936  Ernest Shackleton             15-02-1874     152       0
+937  Queen Isabella I of Castile   22-04-1451     575       0
+938  Benjamin Franklin             17-01-1706     320       0
+939  Theodore Roosevelt            27-10-1858     167       0
+940  Joan Baez                     09-01-1941     85        0
+941  William Faulkner              25-09-1897     128       0
+942  Emily Dickinson               10-12-1830     195       0
+943  Leo Tolstoy                   09-09-1828     197       0
+944  Queen Elizabeth I             07-09-1533     492       0
+947  Elvis Presley                 08-01-1935     91        0
+948  Michael Jackson               29-08-1958     67        0
+949  Steve Jobs                    24-02-1955     71        0
+950  Marilyn Monroe                01-06-1926     99        0
+954  John Lennon                   09-10-1940     85        0
 
-==================================================
-REGISTRO ETL
-==================================================
-Fecha: 2026-05-19 12:40:01.311919
-Archivo: datos-3-2026.txt
-Insertados: 89
-Duplicados/Error: 0
