@@ -45,6 +45,94 @@ def normalizar_fecha(fecha_texto):
 
     return None, None
 
+
+def separar_persona_y_fecha(linea):
+    match = re.match(
+        r"^\s*\d+\.\s*(.+?)\s*(?:-|_|/|;|:|,|\s{2,})\s*(.+)\s*$",
+        linea.strip()
+    )
+
+    if not match:
+        return None, None
+
+    nombre = match.group(1).strip()
+    fecha = match.group(2).strip()
+    return nombre, fecha
+
+
+def construir_clave_fila_lugar(lugar, direccion, latitud, longitud):
+    return (
+        normalizar_texto(lugar).lower(),
+        normalizar_texto(direccion).lower(),
+        latitud.strip(),
+        longitud.strip()
+    )
+
+
+def extraer_numero_y_calle(texto):
+    texto = texto.strip()
+
+    match_inicio = re.match(r"^(\d+[A-Za-z\-]*)\s+(.*)$", texto)
+    if match_inicio:
+        return match_inicio.group(2).strip(), match_inicio.group(1).strip()
+
+    match_fin = re.match(r"^(.*?\b)(\d+[A-Za-z\-]*)$", texto)
+    if match_fin:
+        calle = match_fin.group(1).strip(" ,")
+        numero = match_fin.group(2).strip()
+        if calle:
+            return calle, numero
+
+    return texto, ""
+
+
+def descomponer_direccion(direccion):
+    direccion_partes = [x.strip() for x in direccion.split(",") if x.strip()]
+
+    nombre_calle = ""
+    numero = ""
+    ciudad_estado = ""
+    pais = ""
+
+    if not direccion_partes:
+        return nombre_calle, numero, ciudad_estado, pais
+
+    if len(direccion_partes) == 1:
+        nombre_calle = direccion_partes[0]
+        return nombre_calle, numero, ciudad_estado, pais
+
+    pais = direccion_partes[-1]
+    sin_pais = direccion_partes[:-1]
+
+    if len(sin_pais) == 1:
+        nombre_calle, numero = extraer_numero_y_calle(sin_pais[0])
+        return nombre_calle, numero, ciudad_estado, pais
+
+    primera = sin_pais[0]
+    segunda = sin_pais[1]
+
+    primera_tiene_numero = re.search(r"\d", primera) is not None
+    segunda_empieza_numero = re.match(r"^\d+[A-Za-z\-]*\s+", segunda) is not None
+    segunda_es_solo_numero = re.match(r"^\d+[A-Za-z\-]*$", segunda) is not None
+
+    if not primera_tiene_numero and (segunda_empieza_numero or segunda_es_solo_numero):
+        nombre_calle, numero = extraer_numero_y_calle(segunda)
+        if not numero and segunda_es_solo_numero:
+            numero = segunda
+            nombre_calle = primera
+        else:
+            nombre_calle = f"{primera}, {nombre_calle}".strip(" ,")
+    else:
+        nombre_calle, numero = extraer_numero_y_calle(primera)
+        if len(sin_pais) > 1:
+            ciudad_estado = ", ".join(sin_pais[1:])
+            return nombre_calle, numero, ciudad_estado, pais
+
+    if len(sin_pais) > 2:
+        ciudad_estado = ", ".join(sin_pais[2:])
+
+    return nombre_calle, numero, ciudad_estado, pais
+
 # calcular edad
 def calcular_edad(fecha):
     hoy = datetime.now()
@@ -154,13 +242,15 @@ def index():
             """)
 
             # limpiar tablas
-            cursor.execute("DELETE FROM PERSONAS")
-            cursor.execute("DELETE FROM LUGARES")
-            cursor.execute("DELETE FROM DIRECCIONES")
-            cursor.execute("DELETE FROM GEOREFERENCIAS")
+            cursor.execute("TRUNCATE TABLE PERSONAS")
+            cursor.execute("TRUNCATE TABLE LUGARES")
+            cursor.execute("TRUNCATE TABLE DIRECCIONES")
+            cursor.execute("TRUNCATE TABLE GEOREFERENCIAS")
+
 
             insertados = 0
             duplicados = 0
+            filas_vistas = set()
 
             # ============================================
             # ARCHIVO LUGARES
@@ -212,44 +302,35 @@ def index():
                             latitud = geo_partes[0].strip()
                             longitud = geo_partes[1].strip()
 
+                            clave_fila = construir_clave_fila_lugar(
+                                lugar,
+                                direccion,
+                                latitud,
+                                longitud
+                            )
+
+                            if clave_fila in filas_vistas:
+                                duplicados += 1
+                                continue
+
+                            filas_vistas.add(clave_fila)
+
                             # direccion
-                            direccion_partes = [x.strip() for x in direccion.split(",")]
-
-                            nombre_calle = ""
-                            numero = ""
-                            ciudad_estado = ""
-                            pais = ""
-
-                            if len(direccion_partes) == 1:
-                                nombre_calle = direccion_partes[0]
-
-                            elif len(direccion_partes) >= 2:
-                                pais = direccion_partes[-1]
-                                primer_parte = direccion_partes[0]
-                                match = re.match(r"^(\d+)\s+(.*)", primer_parte)
-
-                                if match:
-                                    numero = match.group(1)
-                                    nombre_calle = match.group(2)
-
-                                else:
-                                    nombre_calle = primer_parte
-
-                                if len(direccion_partes) > 2:
-                                    ciudad_estado = ", ".join(direccion_partes[1:-1])
+                            nombre_calle, numero, ciudad_estado, pais = descomponer_direccion(
+                                direccion
+                            )
 
                             # insertar lugar
                             try:
                                 cursor.execute("""
-                                INSERT INTO LUGARES (nombre)
+                                INSERT IGNORE INTO LUGARES (nombre)
                                 VALUES (%s)
                                 """, (lugar,))
 
                                 insertados += 1
 
                             except:
-                                duplicados += 1
-                                continue
+                                pass
 
                             # insertar direccion
                             try:
@@ -345,9 +426,12 @@ def index():
                             continue
 
                         try:
-                            partes = linea.split(" - ")
-                            nombre = partes[0].split(". ", 1)[1].strip()
-                            fecha_original = partes[1].strip()
+                            nombre, fecha_original = separar_persona_y_fecha(linea)
+
+                            if not nombre or not fecha_original:
+                                duplicados += 1
+                                continue
+
                             fecha_normalizada, fecha_obj = normalizar_fecha(fecha_original)
 
                             if fecha_obj is None:
