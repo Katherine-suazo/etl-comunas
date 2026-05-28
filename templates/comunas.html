@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador de Comunas</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Buscador de Comunas</h1>
+
+        <div class="card">
+
+            <form method="POST">
+                <input type="text" name="comuna" placeholder="Ingrese comuna" required>
+                <button type="submit">Buscar Comuna</button>
+            </form>
+
+            {% if mensaje %}
+            <div class="mensaje">{{ mensaje }}</div>
+            {% endif %}
+
+        </div>
+
+
+        {% if comunas %}
+        <div class="card">
+            <h2>COMUNAS</h2>
+            <div class="tabla-container">
+
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Comuna</th>
+                        <th>Región</th>
+                        <th>Provincia</th>
+                        <th>Habitantes</th>
+                    </tr>
+
+                    {% for fila in comunas %}
+                    <tr>
+                        <td>{{ fila[0] }}</td>
+                        <td>{{ fila[1] }}</td>
+                        <td>{{ fila[2] }}</td>
+                        <td>{{ fila[3] }}</td>
+                        <td>{{ fila[4] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+        <div class="acciones">
+            <a href="/">
+                <button>Volver al Inicio</button>
+            </a>
+        </div>
+    </div>
+
+</body>
+
+</html>

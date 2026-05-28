@@ -5,167 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ETL Normalizador</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
-    <style>
-        body {
-            font-family: 'Segoe UI', sans-serif;
-            background: linear-gradient(to bottom right, #ffe4ec, #fdf2f8);
-            margin: 0;
-            padding: 30px;
-            color: #5b4158;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        h1 {
-            text-align: center;
-            color: #d63384;
-            margin-bottom: 30px;
-            font-size: 42px;
-            letter-spacing: 1px;
-        }
-
-        h2 {
-            color: #c2185b;
-            margin-bottom: 15px;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(8px);
-            padding: 25px;
-            border-radius: 22px;
-            box-shadow: 0 8px 25px rgba(214, 51, 132, 0.15);
-            margin-bottom: 30px;
-            border: 2px solid #ffd6e7;
-        }
-
-        form {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        input[type="file"] {
-            padding: 12px;
-            border: 2px dashed #f8a5c2;
-            border-radius: 12px;
-            background-color: #fff0f6;
-            color: #6d214f;
-            width: 260px;
-        }
-
-        button {
-            background: linear-gradient(135deg, #ff6fa5, #ff85c0);
-            color: white;
-            border: none;
-            padding: 12px 22px;
-            border-radius: 14px;
-            cursor: pointer;
-            font-weight: bold;
-            transition: 0.3s;
-            box-shadow: 0 4px 12px rgba(255, 111, 165, 0.3);
-        }
-
-        button:hover {
-            transform: translateY(-2px);
-            background: linear-gradient(135deg, #ff4f94, #ff70b3);
-        }
-
-        .descargar-btn {
-            background: linear-gradient(135deg, #c471ed, #f64f59);
-        }
-
-        .descargar-btn:hover {
-            background: linear-gradient(135deg, #b65be3, #f03c4a);
-        }
-
-        .mensaje {
-            margin-top: 20px;
-            padding: 14px;
-            border-radius: 12px;
-            background-color: #ffe0ef;
-            border-left: 6px solid #ff5c8a;
-            color: #7a284f;
-            font-weight: 500;
-        }
-
-        .tabla-container {
-            overflow-x: auto;
-            margin-top: 15px;
-            border-radius: 15px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            overflow: hidden;
-            border-radius: 15px;
-        }
-
-        th {
-            background: linear-gradient(135deg, #ff85a2, #ffb6d5);
-            color: white;
-            padding: 14px;
-            text-align: left;
-            font-size: 15px;
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid #ffd6e7;
-        }
-
-        tr:nth-child(even) {
-            background-color: #fff7fb;
-        }
-
-        tr:nth-child(odd) {
-            background-color: #fff0f6;
-        }
-
-        tr:hover {
-            background-color: #ffe3f1;
-            transition: 0.2s;
-        }
-
-        .acciones {
-            margin-top: 20px;
-        }
-
-        .emoji {
-            font-size: 24px;
-            margin-right: 8px;
-        }
-
-        @media (max-width: 768px) {
-
-            body {
-                padding: 15px;
-            }
-
-            form {
-                flex-direction: column;
-                align-items: stretch;
-            }
-
-            input[type="file"] {
-                width: 100%;
-            }
-
-            button {
-                width: 100%;
-            }
-
-            h1 {
-                font-size: 32px;
-            }
-        }
-    </style>
 </head>
 
 <body>
@@ -174,7 +15,7 @@
         <h1>ETL Normalizador</h1>
 
         <div class="card">
-            
+
             <form action="/" method="POST" enctype="multipart/form-data">
                 <input type="file" name="archivo" required />
                 <button type="submit">
@@ -195,6 +36,10 @@
                     </button>
                 </a>
             </div>
+
+            <a href="/comunas">
+                <button class="boton-comunas">Buscar Comunas</button>
+            </a>
 
         </div>
 
