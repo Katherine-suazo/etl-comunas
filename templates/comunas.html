@@ -17,6 +17,11 @@
             <form method="POST">
                 <input type="text" name="comuna" placeholder="Ingrese comuna" required>
                 <button type="submit">Buscar Comuna</button>
+                <select name="formato">
+                    <option value="titulo">Formato Título</option>
+                    <option value="mayusculas">MAYÚSCULAS</option>
+                    <option value="minusculas">minúsculas</option>
+                </select>
             </form>
 
             {% if mensaje %}

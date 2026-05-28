@@ -127,3 +127,11 @@ def descomponer_direccion(direccion):
     return nombre_calle, numero, ciudad_estado, pais
 
 
+def aplicar_formato(texto, formato):
+    if formato == "mayusculas":
+        return texto.upper()
+
+    elif formato == "minusculas":
+        return texto.lower()
+
+    return texto.title()

@@ -42,7 +42,7 @@ def guardar_comuna(cursor, comuna):
         return False
 
 
-def buscar_y_guardar_comuna(nombre_comuna):
+def buscar_y_guardar_comuna(nombre_comuna, formato):
     connection = None
     cursor = None
 
@@ -50,7 +50,7 @@ def buscar_y_guardar_comuna(nombre_comuna):
         connection = conectar_db()
         cursor = connection.cursor()
         crear_tabla_comunas(cursor)
-        resultados_api = buscar_comuna_api(nombre_comuna)
+        resultados_api = buscar_comuna_api(nombre_comuna, formato)
 
         if not resultados_api:
             return {
@@ -61,7 +61,16 @@ def buscar_y_guardar_comuna(nombre_comuna):
 
         insertados = 0
 
+        comunas_vistas = set()
+
         for comuna in resultados_api:
+            nombre_normalizado = (comuna["comuna"].strip().lower())
+
+            # evitar duplicados en memoria
+            if nombre_normalizado in comunas_vistas:
+                continue
+
+            comunas_vistas.add(nombre_normalizado)
             guardado = guardar_comuna(cursor, comuna)
 
             if guardado:

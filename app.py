@@ -77,7 +77,8 @@ def comunas():
 
     if request.method == "POST":
         nombre_comuna = request.form.get("comuna")
-        resultado = buscar_y_guardar_comuna(nombre_comuna)
+        formato = request.form.get("formato")
+        resultado = buscar_y_guardar_comuna(nombre_comuna, formato)
         mensaje = resultado["mensaje"]
         comunas = resultado["comunas"]
 
