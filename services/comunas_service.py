@@ -1,12 +1,14 @@
 from database.conexion import conectar_db
-from services.api_service import (buscar_comuna_api)
+from services.api_service import buscar_comuna_api
 
 
 def crear_tabla_comunas(cursor):
+
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS COMUNAS (
         id INT AUTO_INCREMENT PRIMARY KEY,
-        comuna VARCHAR(255) UNIQUE,
+        comuna VARCHAR(255),
+        comuna_normalizada VARCHAR(255) UNIQUE,
         region VARCHAR(255),
         provincia VARCHAR(255),
         habitantes INT
@@ -17,24 +19,22 @@ def crear_tabla_comunas(cursor):
 def guardar_comuna(cursor, comuna):
     try:
         cursor.execute("""
-        INSERT INTO COMUNAS
-        (
-            comuna,
-            region,
-            provincia,
-            habitantes
-        )
-        VALUES (%s, %s, %s, %s)
+        INSERT INTO COMUNAS (comuna, comuna_normalizada, region, provincia, habitantes)
+        VALUES (%s, %s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
+            comuna = VALUES(comuna),
             region = VALUES(region),
             provincia = VALUES(provincia),
             habitantes = VALUES(habitantes)
+
         """, (
             comuna["comuna"],
+            comuna["comuna_normalizada"],
             comuna["region"],
             comuna["provincia"],
             comuna["habitantes"]
         ))
+
         return True
 
     except Exception as e:
@@ -49,6 +49,7 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
     try:
         connection = conectar_db()
         cursor = connection.cursor()
+        #cursor.execute("DROP TABLE IF EXISTS COMUNAS")
         crear_tabla_comunas(cursor)
         resultados_api = buscar_comuna_api(nombre_comuna, formato)
 
@@ -60,13 +61,11 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
             }
 
         insertados = 0
-
         comunas_vistas = set()
 
         for comuna in resultados_api:
-            nombre_normalizado = (comuna["comuna"].strip().lower())
+            nombre_normalizado = comuna["comuna_normalizada"]
 
-            # evitar duplicados en memoria
             if nombre_normalizado in comunas_vistas:
                 continue
 
@@ -76,20 +75,13 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
             if guardado:
                 insertados += 1
 
-        # obtener comunas guardadas
         cursor.execute("""
-        SELECT
-            id,
-            comuna,
-            region,
-            provincia,
-            habitantes
+        SELECT id, comuna, region, provincia, habitantes
         FROM COMUNAS
         ORDER BY comuna
         """)
 
         comunas_guardadas = cursor.fetchall()
-
         mensaje = f"""
         Proceso completado.
         - Comunas encontradas API: {len(resultados_api)}
@@ -104,6 +96,7 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
 
     except Exception as e:
         print("ERROR COMUNAS SERVICE:", e)
+
         return {
             "success": False,
             "mensaje": f"Error: {str(e)}",
@@ -120,26 +113,22 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
 def obtener_comunas():
     connection = None
     cursor = None
+
     try:
         connection = conectar_db()
         cursor = connection.cursor()
         crear_tabla_comunas(cursor)
+
         cursor.execute("""
-        SELECT
-            id,
-            comuna,
-            region,
-            provincia,
-            habitantes
+        SELECT id, comuna, region, provincia, habitantes
         FROM COMUNAS
         ORDER BY comuna
         """)
 
-        comunas = cursor.fetchall()
-        return comunas
+        return cursor.fetchall()
 
     except Exception as e:
-        print("ERROR OBTENER COMUNAS:", e)
+        print("ERROR OBTENER COMUNAS:",e)
         return []
 
     finally:

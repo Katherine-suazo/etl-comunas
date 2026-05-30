@@ -2,7 +2,7 @@ import requests
 from services.normalizador import (normalizar_texto, aplicar_formato)
 
 
-BASE_URL = ("https://chileabierto.cl/api/v1/comunas")
+BASE_URL = "https://chileabierto.cl/api/v1/comunas"
 
 def buscar_comuna_api(nombre_comuna, formato):
     try:
@@ -18,6 +18,7 @@ def buscar_comuna_api(nombre_comuna, formato):
         for comuna in data["data"]:
             resultados.append({
                 "comuna": aplicar_formato(comuna["name"], formato),
+                "comuna_normalizada": normalizar_texto(comuna["name"]).lower(),
                 "region": aplicar_formato(comuna["region_name"], formato),
                 "provincia": aplicar_formato(comuna["province_name"], formato),
                 "habitantes": comuna["population"],
