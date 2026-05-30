@@ -1,9 +1,9 @@
 from database.conexion import conectar_db
 from services.api_service import buscar_comuna_api
+from services.log_service import escribir_log_comunas
 
 
 def crear_tabla_comunas(cursor):
-
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS COMUNAS (
         id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,6 +54,8 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
         resultados_api = buscar_comuna_api(nombre_comuna, formato)
 
         if not resultados_api:
+            escribir_log_comunas(nombre_comuna, 1, 0, 0, 0, 1, 0, [])
+
             return {
                 "success": False,
                 "mensaje": "No se encontraron comunas.",
@@ -61,12 +63,17 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
             }
 
         insertados = 0
+        duplicados = 0
+        errores = 0
+
         comunas_vistas = set()
 
         for comuna in resultados_api:
             nombre_normalizado = comuna["comuna_normalizada"]
 
+            # eliminar duplicados en memoria
             if nombre_normalizado in comunas_vistas:
+                duplicados += 1
                 continue
 
             comunas_vistas.add(nombre_normalizado)
@@ -74,18 +81,35 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
 
             if guardado:
                 insertados += 1
+            else:
+                errores += 1
 
         cursor.execute("""
-        SELECT id, comuna, region, provincia, habitantes
+        SELECT id, comuna, region, provincia,habitantes
         FROM COMUNAS
         ORDER BY comuna
         """)
 
         comunas_guardadas = cursor.fetchall()
+
+        escribir_log_comunas(
+            nombre_comuna,
+            1,
+            len(resultados_api),
+            insertados,
+            duplicados,
+            0,
+            errores,
+            comunas_guardadas
+        )
+
         mensaje = f"""
         Proceso completado.
-        - Comunas encontradas API: {len(resultados_api)}
-        - Comunas guardadas/actualizadas: {insertados}
+        Comunas encontradas API: {len(resultados_api)}
+        Procesadas: {len(resultados_api)}
+        Duplicados eliminados: {duplicados}
+        Guardadas/Actualizadas: {insertados}
+        Errores: {errores}
         """
 
         return {
@@ -95,8 +119,7 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
         }
 
     except Exception as e:
-        print("ERROR COMUNAS SERVICE:", e)
-
+        print("ERROR COMUNAS:", e)
         return {
             "success": False,
             "mensaje": f"Error: {str(e)}",

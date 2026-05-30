@@ -1,0 +1,23 @@
+REGISTRO ETL COMUNAS
+================================================================================
+
+Fecha: 2026-05-30 02:58:19.515860
+Búsqueda: Los alamos
+Registros leídos: 1
+Comunas procesadas: 1
+Duplicados eliminados: 0
+Consolidadas correctamente: 1
+No encontradas: 0
+Errores: 0
+
+================================================================================
+
+COMUNAS CONSOLIDADAS
+
+ID   COMUNA                        REGION                   PROVINCIA                HABITANTES
+------------------------------------------------------------------------------------------------------------------------
+5    Cañete                        Biobio                   Arauco                   37296
+1    CONCEPCION                    BIOBIO                   CONCEPCION               223000
+3    curanilahue                   biobio                   arauco                   33936
+13   Los Álamos                    Biobio                   Arauco                   22801
+4    TALCAHUANO                    BIOBIO                   CONCEPCION               170000

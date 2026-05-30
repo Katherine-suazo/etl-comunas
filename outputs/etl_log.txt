@@ -1,0 +1,22 @@
+REGISTRO ETL COMUNAS
+================================================================================
+
+Fecha: 2026-05-30 02:45:59.757456
+Búsqueda: concepcion
+Registros leídos: 1
+Comunas procesadas: 1
+Duplicados eliminados: 0
+Consolidadas correctamente: 1
+No encontradas: 0
+Errores: 0
+
+================================================================================
+
+COMUNAS CONSOLIDADAS
+
+ID   COMUNA                        REGION                   PROVINCIA                HABITANTES
+------------------------------------------------------------------------------------------------------------------------
+5    Cañete                        Biobio                   Arauco                   37296
+1    CONCEPCION                    BIOBIO                   CONCEPCION               223000
+3    curanilahue                   biobio                   arauco                   33936
+4    TALCAHUANO                    BIOBIO                   CONCEPCION               170000

@@ -250,6 +250,5 @@ def procesar_lugares(contenido, nombre_archivo):
     finally:
         if cursor:
             cursor.close()
-
         if connection:
             connection.close()

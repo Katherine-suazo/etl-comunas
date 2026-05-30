@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, send_file
 from services.personas_service import procesar_personas
 from services.lugares_service import procesar_lugares
 from services.comunas_service import buscar_y_guardar_comuna, obtener_comunas
+from os.path import exists
 
 
 app = Flask(__name__)
@@ -67,7 +68,7 @@ def index():
 
 @app.route("/descargar-log")
 def descargar_log():
-    return send_file("outputs/log.txt", as_attachment=True)
+    return send_file("outputs/etl_log.txt", as_attachment=True)
             
 
 @app.route("/comunas", methods=["GET", "POST"])
@@ -83,6 +84,11 @@ def comunas():
         comunas = resultado["comunas"]
 
     return render_template("comunas.html", mensaje=mensaje, comunas=comunas)
+
+
+@app.route("/descargar-log-comunas")
+def descargar_log_comunas():
+    return send_file("outputs/log_comunas.txt", as_attachment=True)
 
 
 if __name__ == "__main__":

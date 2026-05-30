@@ -2,9 +2,7 @@ from datetime import datetime
 
 
 def escribir_log_personas(nombre_archivo, total_original, procesados, insertados, duplicados, datos):
-
     with open("outputs/etl_log.txt", "w", encoding="utf-8") as log:
-
         log.write("\n")
         log.write("REGISTRO ETL\n")
         log.write("\n")
@@ -15,10 +13,6 @@ def escribir_log_personas(nombre_archivo, total_original, procesados, insertados
         log.write(f"Insertados: {insertados}\n")
         log.write(f"Duplicados: {duplicados}\n")
         log.write("\n")
-
-        # ========================================
-        # TABLA PERSONAS
-        # ========================================
 
         if datos:
             log.write("\n")
@@ -46,8 +40,8 @@ def escribir_log_personas(nombre_archivo, total_original, procesados, insertados
             log.write("\n")
 
 
-def escribir_log_lugares(nombre_archivo,total_original,procesados,insertados,duplicados,lugares,direcciones,geos):
 
+def escribir_log_lugares(nombre_archivo,total_original,procesados,insertados,duplicados,lugares,direcciones,geos):
     with open("outputs/etl_log.txt", "w", encoding="utf-8") as log:
         log.write("\n")
         log.write("REGISTRO ETL\n")
@@ -59,7 +53,6 @@ def escribir_log_lugares(nombre_archivo,total_original,procesados,insertados,dup
         log.write(f"Insertados: {insertados}\n")
         log.write(f"Duplicados: {duplicados}\n")
         log.write("\n")
-
 
         # TABLA LUGARES
         if lugares:
@@ -129,3 +122,44 @@ def escribir_log_lugares(nombre_archivo,total_original,procesados,insertados,dup
                 )
 
             log.write("\n")
+
+        
+
+
+def escribir_log_comunas(termino_busqueda, leidos, procesados, insertados, duplicados, no_encontrados, errores, comunas_guardadas):
+    with open("outputs/log_comunas.txt", "w", encoding="utf-8") as log:
+        log.write("REGISTRO ETL COMUNAS\n")
+        log.write("=" * 80 + "\n\n")
+        log.write(f"Fecha: {datetime.now()}\n")
+        log.write(f"Búsqueda: {termino_busqueda}\n")
+        log.write(f"Registros leídos: {leidos}\n")
+        log.write(f"Comunas procesadas: {procesados}\n")
+        log.write(f"Duplicados eliminados: {duplicados}\n")
+        log.write(f"Consolidadas correctamente: {insertados}\n")
+        log.write(f"No encontradas: {no_encontrados}\n")
+        log.write(f"Errores: {errores}\n")
+        log.write("\n")
+        log.write("=" * 80)
+        log.write("\n\n")
+
+        if comunas_guardadas:
+            log.write("COMUNAS CONSOLIDADAS\n")
+            log.write("\n")
+            log.write(
+                f"{'ID':<5}"
+                f"{'COMUNA':<30}"
+                f"{'REGION':<25}"
+                f"{'PROVINCIA':<25}"
+                f"{'HABITANTES'}\n"
+            )
+            log.write("-" * 120)
+            log.write("\n")
+
+            for fila in comunas_guardadas:
+                log.write(
+                    f"{fila[0]:<5}"
+                    f"{str(fila[1]):<30}"
+                    f"{str(fila[2]):<25}"
+                    f"{str(fila[3]):<25}"
+                    f"{str(fila[4])}\n"
+                )
