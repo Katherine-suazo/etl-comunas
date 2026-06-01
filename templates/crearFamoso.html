@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <title>{{ famoso.nombre }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="acciones">
+            <a href="/procesar">
+                <button>Volver</button>
+            </a>
+        </div>
+
+        {% if famoso %}
+
+        <h1>{{ famoso.nombre }}</h1>
+
+        <div class="card">
+
+            <div class="famoso-contenedor">
+
+                <div class="famoso-imagen">
+                    {% if famoso.imagen %}
+                    <img src="{{ famoso.imagen }}" alt="{{ famoso.nombre }}">
+                    {% endif %}
+                </div>
+
+                <div class="famoso-info">
+                    <h3>Descripción</h3>
+                    <p>{{ famoso.descripcion }}</p>
+                    <p>
+                        <strong>Fuente:</strong>
+                        <a href="{{ famoso.fuente }}" target="_blank">Wikipedia</a>
+                    </p>
+                    <p>
+                        <strong>Fecha de captura:</strong>
+                        {{ famoso.fecha_captura }}
+                    </p>
+                </div>
+
+            </div>
+
+        </div>
+
+        {% else %}
+
+        <h2>No se encontró información.</h2>
+
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>

@@ -1,22 +1,69 @@
-REGISTRO ETL COMUNAS
-================================================================================
 
-Fecha: 2026-05-30 02:45:59.757456
-Búsqueda: concepcion
-Registros leídos: 1
-Comunas procesadas: 1
-Duplicados eliminados: 0
-Consolidadas correctamente: 1
-No encontradas: 0
-Errores: 0
+REGISTRO ETL
 
-================================================================================
+Fecha: 2026-06-01 19:13:48.853779
+Archivo: DATOS2famosos.txt
+Registros archivo: 97
+Procesados: 97
+Insertados: 53
+Duplicados: 44
 
-COMUNAS CONSOLIDADAS
 
-ID   COMUNA                        REGION                   PROVINCIA                HABITANTES
-------------------------------------------------------------------------------------------------------------------------
-5    Cañete                        Biobio                   Arauco                   37296
-1    CONCEPCION                    BIOBIO                   CONCEPCION               223000
-3    curanilahue                   biobio                   arauco                   33936
-4    TALCAHUANO                    BIOBIO                   CONCEPCION               170000
+TABLA PERSONAS
+
+ID   NOMBRE                        FECHA          EDAD      CUMPLE
+--------------------------------------------------------------------------------
+1    William Shakespeare           23-04-1564     462       0
+2    Albert Einstein               14-03-1879     147       0
+3    Nelson Mandela                18-07-1918     107       0
+4    Isaac Newton                  25-12-1642     383       0
+5    Leonardo da Vinci             15-04-1452     574       0
+6    Mahatma Gandhi                02-10-1869     156       0
+7    Alexander Graham Bell         03-03-1847     179       0
+8    Marie Curie                   07-11-1867     158       0
+9    Martin Luther King Jr.        15-01-1929     97        0
+10   George Washington             22-02-1732     294       0
+11   Queen Elizabeth II            21-04-1926     100       0
+12   Napoleon Bonaparte            15-08-1769     256       0
+13   Galileo Galilei               15-02-1564     462       0
+14   Beethoven                     17-12-1770     255       0
+15   Winston Churchill             30-11-1874     151       0
+16   Joan of Arc                   06-01-1412     614       0
+17   Pablo Picasso                 25-10-1881     144       0
+18   Sigmund Freud                 06-05-1856     170       0
+19   Ernest Hemingway              21-07-1899     126       0
+20   Amelia Earhart                24-07-1897     128       0
+21   Vincent van Gogh              30-03-1853     173       0
+22   Michelangelo                  06-03-1475     551       0
+23   Charles Darwin                12-02-1809     217       0
+24   Abraham Lincoln               12-02-1809     217       0
+25   Anne Frank                    12-06-1929     96        0
+26   Mozart                        27-01-1756     270       0
+27   Coco Chanel                   19-08-1883     142       0
+28   Queen Victoria                24-05-1819     207       0
+29   Rosa Parks                    04-02-1913     113       0
+30   John F. Kennedy               29-05-1917     109       0
+31   Frida Kahlo                   06-07-1907     118       0
+32   Isaac Asimov                  02-01-1920     106       0
+33   Edgar Allan Poe               19-01-1809     217       0
+34   Joan Miró                     20-04-1893     133       0
+35   Jane Austen                   16-12-1775     250       0
+36   Neil Armstrong                05-08-1930     95        0
+37   Christopher Columbus          31-10-1451     574       0
+38   Mother Teresa                 26-08-1910     115       0
+39   Che Guevara                   14-06-1928     97        0
+40   Ernest Shackleton             15-02-1874     152       0
+41   Queen Isabella I of Castile   22-04-1451     575       0
+42   Benjamin Franklin             17-01-1706     320       0
+43   Theodore Roosevelt            27-10-1858     167       0
+44   Joan Baez                     09-01-1941     85        0
+45   William Faulkner              25-09-1897     128       0
+46   Emily Dickinson               10-12-1830     195       0
+47   Leo Tolstoy                   09-09-1828     197       0
+48   Queen Elizabeth I             07-09-1533     492       0
+51   Elvis Presley                 08-01-1935     91        0
+52   Michael Jackson               29-08-1958     67        0
+53   Steve Jobs                    24-02-1955     71        0
+54   Marilyn Monroe                01-06-1926     100       1
+58   John Lennon                   09-10-1940     85        0
+

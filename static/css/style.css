@@ -1,6 +1,6 @@
 body {
     font-family: 'Segoe UI', sans-serif;
-    background: linear-gradient(to bottom right, #ffe4ec, #fdf2f8);
+    background: linear-gradient(to bottom right, #efe4ff, #f6f2fd);
     margin: 0;
     padding: 30px;
     color: #5b4158;
@@ -64,6 +64,24 @@ button {
 
 .boton-comunas{
     margin-top: 10px;
+}
+
+.famoso-contenedor{
+    display:flex;
+    align-items:flex-start;
+}
+
+.famoso-imagen{
+    flex:1;
+}
+
+.famoso-imagen img{
+    width:90%;
+    border-radius:10px;
+}
+
+.famoso-info{
+    flex:1;
 }
 
 button:hover {

@@ -1,13 +1,23 @@
 from flask import Flask, render_template, request, send_file
+from database.conexion import conectar_db
 from services.personas_service import procesar_personas
 from services.lugares_service import procesar_lugares
-from services.comunas_service import buscar_y_guardar_comuna, obtener_comunas
+from services.famosos_service import obtener_info_famoso
+from services.comunas_service import buscar_y_guardar_comuna
 from os.path import exists
 
 
 app = Flask(__name__)
 
-@app.route("/", methods=["GET", "POST"])
+
+
+@app.route("/")
+def inicio():
+    return render_template("index.html")
+
+
+
+@app.route("/procesar", methods=["GET", "POST"])
 def index():
     mensaje = ""
     datos = []
@@ -21,13 +31,13 @@ def index():
             # validar archivo
             if "archivo" not in request.files:
                 mensaje = "Debe seleccionar un archivo."
-                return render_template("index.html", mensaje=mensaje)
+                return render_template("procesar.html", mensaje=mensaje)
 
             archivo = request.files["archivo"]
 
             if archivo.filename == "":
                 mensaje = "No se ha seleccionado ningún archivo."
-                return render_template("index.html", mensaje=mensaje)
+                return render_template("procesar.html", mensaje=mensaje)
 
             # leer archivo
             try:
@@ -56,7 +66,7 @@ def index():
             print("ERROR APP:", e)
 
     return render_template(
-        "index.html",
+        "procesar.html",
         mensaje=mensaje,
         datos=datos,
         encabezados=encabezados,
@@ -75,20 +85,34 @@ def descargar_log():
 def comunas():
     mensaje = ""
     comunas = []
+    sugerencias = []
 
     if request.method == "POST":
         nombre_comuna = request.form.get("comuna")
         formato = request.form.get("formato")
+
         resultado = buscar_y_guardar_comuna(nombre_comuna, formato)
+
         mensaje = resultado["mensaje"]
         comunas = resultado["comunas"]
+        sugerencias = resultado.get("sugerencias", [])
 
-    return render_template("comunas.html", mensaje=mensaje, comunas=comunas)
+    return render_template("comunas.html", mensaje=mensaje, comunas=comunas, sugerencias=sugerencias)
 
 
 @app.route("/descargar-log-comunas")
 def descargar_log_comunas():
     return send_file("outputs/log_comunas.txt", as_attachment=True)
+
+
+@app.route("/famoso/<path:nombre>")
+def ver_famoso(nombre):
+    famoso = obtener_info_famoso(nombre)
+    return render_template("crearFamoso.html", famoso=famoso)
+
+
+
+
 
 
 if __name__ == "__main__":

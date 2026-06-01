@@ -16,155 +16,20 @@
 
         <div class="card">
 
-            <form action="/" method="POST" enctype="multipart/form-data">
-                <input type="file" name="archivo" required />
-                <button type="submit">
-                    Procesar Archivo
-                </button>
-            </form>
-
-            {% if mensaje %}
-            <div class="mensaje">
-                {{ mensaje }}
-            </div>
-            {% endif %}
-
-            <div class="acciones">
-                <a href="/descargar-log">
-                    <button class="descargar-btn">Descargar Log</button>
-                </a>
-            </div>
+            <a href="/procesar">
+                <button class="boton-comunas">Procesar Archivo</button>
+            </a>
 
             <a href="/comunas">
                 <button class="boton-comunas">Buscar Comunas</button>
             </a>
 
+            <a href="/mapa">
+                <button class="boton-comunas">mapa</button>
+            </a>
+            
         </div>
 
-
-
-        <!-- LUGARES -->
-
-        {% if lugares %}
-
-        <div class="card">
-            <h2>LUGARES</h2>
-
-            <div class="tabla-container">
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre Lugar</th>
-                    </tr>
-
-                    {% for fila in lugares %}
-                    <tr>
-                        <td>{{ fila[0] }}</td>
-                        <td>{{ fila[1] }}</td>
-                    </tr>
-                    {% endfor %}
-
-                </table>
-            </div>
-        </div>
-
-        {% endif %}
-
-
-
-        <!-- DIRECCIONES -->
-
-        {% if direcciones %}
-
-        <div class="card">
-            <h2>DIRECCIONES</h2>
-
-            <div class="tabla-container">
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Nombre Calle</th>
-                        <th>Número Calle</th>
-                        <th>Ciudad / Estado</th>
-                        <th>País</th>
-                    </tr>
-
-                    {% for fila in direcciones %}
-
-                    <tr>
-                        <td>{{ fila[0] }}</td>
-                        <td>{{ fila[1] }}</td>
-                        <td>{{ fila[2] }}</td>
-                        <td>{{ fila[3] }}</td>
-                        <td>{{ fila[4] }}</td>
-                    </tr>
-
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-
-        {% endif %}
-
-
-
-        <!-- GEOREFERENCIAS -->
-
-        {% if geos %}
-
-        <div class="card">
-            <h2>GEOREFERENCIAS</h2>
-
-            <div class="tabla-container">
-                <table>
-                    <tr>
-                        <th>ID</th>
-                        <th>Latitud</th>
-                        <th>Longitud</th>
-                    </tr>
-
-                    {% for fila in geos %}
-                    <tr>
-                        <td>{{ fila[0] }}</td>
-                        <td>{{ fila[1] }}</td>
-                        <td>{{ fila[2] }}</td>
-                    </tr>
-                    {% endfor %}
-
-                </table>
-            </div>
-        </div>
-
-        {% endif %}
-
-
-
-        <!-- PERSONAS -->
-
-        {% if datos %}
-
-        <div class="card">
-            <h2>PERSONAS</h2>
-
-            <div class="tabla-container">
-                <table>
-                    <tr>
-                        {% for encabezado in encabezados %}
-                        <th>{{ encabezado }}</th>
-                        {% endfor %}
-                    </tr>
-
-                    {% for fila in datos %}
-                    <tr>
-                        {% for valor in fila %}
-                        <td>{{ valor }}</td>
-                        {% endfor %}
-                    </tr>
-                    {% endfor %}
-                </table>
-            </div>
-        </div>
-        {% endif %}
     </div>
 
 </body>

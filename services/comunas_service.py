@@ -55,12 +55,8 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
 
         if not resultados_api:
             escribir_log_comunas(nombre_comuna, 1, 0, 0, 0, 1, 0, [])
-
-            return {
-                "success": False,
-                "mensaje": "No se encontraron comunas.",
-                "comunas": []
-            }
+            #sugerencias = obtener_sugerencias(nombre_comuna)
+            return {"success": False, "mensaje": "No se encontraron comunas.", "comunas": []}
 
         insertados = 0
         duplicados = 0
@@ -84,12 +80,7 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
             else:
                 errores += 1
 
-        cursor.execute("""
-        SELECT id, comuna, region, provincia,habitantes
-        FROM COMUNAS
-        ORDER BY comuna
-        """)
-
+        cursor.execute("SELECT id, comuna, region, provincia,habitantes FROM COMUNAS ORDER BY comuna")
         comunas_guardadas = cursor.fetchall()
 
         escribir_log_comunas(
@@ -112,19 +103,11 @@ def buscar_y_guardar_comuna(nombre_comuna, formato):
         Errores: {errores}
         """
 
-        return {
-            "success": True,
-            "mensaje": mensaje,
-            "comunas": comunas_guardadas
-        }
+        return {"success": True, "mensaje": mensaje, "comunas": comunas_guardadas}
 
     except Exception as e:
         print("ERROR COMUNAS:", e)
-        return {
-            "success": False,
-            "mensaje": f"Error: {str(e)}",
-            "comunas": []
-        }
+        return {"success": False, "mensaje": f"Error: {str(e)}", "comunas": []}
 
     finally:
         if cursor:
@@ -141,13 +124,7 @@ def obtener_comunas():
         connection = conectar_db()
         cursor = connection.cursor()
         crear_tabla_comunas(cursor)
-
-        cursor.execute("""
-        SELECT id, comuna, region, provincia, habitantes
-        FROM COMUNAS
-        ORDER BY comuna
-        """)
-
+        cursor.execute("SELECT id, comuna, region, provincia, habitantes FROM COMUNAS ORDER BY comuna")
         return cursor.fetchall()
 
     except Exception as e:
@@ -159,3 +136,18 @@ def obtener_comunas():
             cursor.close()
         if connection:
             connection.close()
+
+
+#def obtener_sugerencias(nombre_busqueda):
+    #connection = conectar_db()
+    #cursor = connection.cursor()
+    #cursor.execute("SELECT comuna FROM COMUNAS WHERE comuna LIKE %s LIMIT 5", (f"%{nombre_busqueda}%",))
+    #sugerencias = [fila[0] for fila in cursor.fetchall()]
+    #cursor.close()
+    #connection.close()
+    #return sugerencias
+
+
+
+
+    

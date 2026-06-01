@@ -1,12 +1,12 @@
 REGISTRO ETL COMUNAS
 ================================================================================
 
-Fecha: 2026-05-30 02:58:19.515860
-Búsqueda: Los alamos
+Fecha: 2026-06-01 14:26:49.627894
+Búsqueda: talca
 Registros leídos: 1
-Comunas procesadas: 1
+Comunas procesadas: 2
 Duplicados eliminados: 0
-Consolidadas correctamente: 1
+Consolidadas correctamente: 2
 No encontradas: 0
 Errores: 0
 
@@ -18,6 +18,9 @@ ID   COMUNA                        REGION                   PROVINCIA           
 ------------------------------------------------------------------------------------------------------------------------
 5    Cañete                        Biobio                   Arauco                   37296
 1    CONCEPCION                    BIOBIO                   CONCEPCION               223000
-3    curanilahue                   biobio                   arauco                   33936
+3    Curanilahue                   Biobio                   Arauco                   33936
+19   Florida                       Biobio                   Concepcion               11000
+20   La Florida                    Metropolitana De SantiagoSantiago                 366000
 13   Los Álamos                    Biobio                   Arauco                   22801
+23   TALCA                         MAULE                    TALCA                    220000
 4    TALCAHUANO                    BIOBIO                   CONCEPCION               170000

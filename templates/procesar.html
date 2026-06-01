@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Procesar Archivo</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Normalizador</h1>
+
+        <div class="card">
+
+            <form action="/procesar" method="POST" enctype="multipart/form-data">
+                <input type="file" name="archivo" required />
+                <button type="submit">Procesar</button>
+            </form>
+
+            <div class="acciones">
+                <a href="/"><button>Volver</button></a>
+            </div>
+
+            {% if mensaje %}
+            <div class="mensaje">
+                {{ mensaje }}
+            </div>
+            {% endif %}
+
+        </div>
+
+
+
+        <!-- LUGARES -->
+
+        {% if lugares %}
+
+        <div class="card">
+            <h2>LUGARES</h2>
+
+            <div class="tabla-container">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Lugar</th>
+                    </tr>
+
+                    {% for fila in lugares %}
+                    <tr>
+                        <td>{{ fila[0] }}</td>
+                        <td>{{ fila[1] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- DIRECCIONES -->
+
+        {% if direcciones %}
+
+        <div class="card">
+            <h2>DIRECCIONES</h2>
+
+            <div class="tabla-container">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Nombre Calle</th>
+                        <th>Número Calle</th>
+                        <th>Ciudad / Estado</th>
+                        <th>País</th>
+                    </tr>
+
+                    {% for fila in direcciones %}
+
+                    <tr>
+                        <td>{{ fila[0] }}</td>
+                        <td>{{ fila[1] }}</td>
+                        <td>{{ fila[2] }}</td>
+                        <td>{{ fila[3] }}</td>
+                        <td>{{ fila[4] }}</td>
+                    </tr>
+
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+
+        {% endif %}
+
+
+
+        <!-- GEOREFERENCIAS -->
+
+        {% if geos %}
+
+        <div class="card">
+            <h2>GEOREFERENCIAS</h2>
+
+            <div class="tabla-container">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Latitud</th>
+                        <th>Longitud</th>
+                    </tr>
+
+                    {% for fila in geos %}
+                    <tr>
+                        <td>{{ fila[0] }}</td>
+                        <td>{{ fila[1] }}</td>
+                        <td>{{ fila[2] }}</td>
+                    </tr>
+                    {% endfor %}
+
+                </table>
+            </div>
+        </div>
+
+        {% endif %}
+
+
+        <!-- PERSONAS -->
+
+        {% if datos %}
+
+        <div class="card">
+            <h2>PERSONAS</h2>
+
+            <div class="tabla-container">
+                <table>
+                    <tr>
+
+                        {% for encabezado in encabezados %}
+                        <th>{{ encabezado }}</th>
+                        {% endfor %}
+
+                        <th>Imagen</th>
+
+                    </tr>
+
+                    {% for fila in datos %}
+                    <tr>
+
+                        {% for valor in fila %}
+                        <td>{{ valor }}</td>
+                        {% endfor %}
+
+                        <td>
+                            <a href="{{ url_for('ver_famoso', nombre=fila[1]) }}"><button>Ver Imagen</button></a>
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+        </div>
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
