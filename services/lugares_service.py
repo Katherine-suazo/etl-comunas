@@ -32,9 +32,12 @@ def crear_tablas_lugares(cursor):
     cursor.execute("""
     CREATE TABLE IF NOT EXISTS GEOREFERENCIAS (
         id INT AUTO_INCREMENT PRIMARY KEY,
+        lugar_id INT,
         latitud VARCHAR(50),
         longitud VARCHAR(50),
-        UNIQUE(latitud, longitud)
+
+        FOREIGN KEY (lugar_id)
+        REFERENCES LUGARES(id)
     )
     """)
 

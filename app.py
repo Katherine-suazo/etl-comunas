@@ -111,7 +111,18 @@ def ver_famoso(nombre):
     return render_template("crearFamoso.html", famoso=famoso)
 
 
+@app.route("/mapa")
+def mapa():
+    connection = conectar_db()
+    cursor = connection.cursor()
 
+    cursor.execute("SELECT latitud, longitud FROM GEOREFERENCIAS")
+    lugares = cursor.fetchall()
+
+    cursor.close()
+    connection.close()
+
+    return render_template("mapa.html", lugares=lugares)
 
 
 
