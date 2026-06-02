@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Mapa</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 
     <style>
         #map {
@@ -16,47 +17,55 @@
 
 <body>
 
-    <h1>Mapa de Georreferencias</h1>
+    <div class="container">
 
-    <div id="map"></div>
+        <h1>Mapa de Georreferencias</h1>
 
-    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+        <div class="card">
 
-    <script>
+            <div id="map"></div>
 
-        var map = L.map('map').setView([20, 0], 2);
+        <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
 
-        L.tileLayer(
-            'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-            {
-                attribution: '&copy; OpenStreetMap'
+        <script>
+
+            var map = L.map('map').setView([20, 0], 2);
+
+            L.tileLayer(
+                'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+                {
+                    attribution: '&copy; OpenStreetMap'
+                }
+            ).addTo(map);
+
+            var puntos = [];
+
+            {% for lugar in lugares %}
+
+            var lat = parseFloat("{{ lugar[0] }}");
+            var lon = parseFloat("{{ lugar[1] }}");
+
+            puntos.push([lat, lon]);
+
+            L.marker([lat, lon])
+                .addTo(map)
+                .bindPopup(
+                    '<a target="_blank" href="https://www.google.com/maps?q='
+                    + lat + ',' + lon +
+                    '">Abrir en Google Maps</a>'
+                );
+
+            {% endfor %}
+
+            if (puntos.length > 0) {
+                map.fitBounds(puntos);
             }
-        ).addTo(map);
 
-        var puntos = [];
+        </script>
+        
+        </div>
 
-        {% for lugar in lugares %}
-
-        var lat = parseFloat("{{ lugar[0] }}");
-        var lon = parseFloat("{{ lugar[1] }}");
-
-        puntos.push([lat, lon]);
-
-        L.marker([lat, lon])
-            .addTo(map)
-            .bindPopup(
-                '<a target="_blank" href="https://www.google.com/maps?q='
-                + lat + ',' + lon +
-                '">Abrir en Google Maps</a>'
-            );
-
-        {% endfor %}
-
-        if (puntos.length > 0) {
-            map.fitBounds(puntos);
-        }
-
-    </script>
+    </div>
 
 </body>
 

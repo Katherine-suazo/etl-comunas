@@ -1,7 +1,7 @@
 
 REGISTRO ETL
 
-Fecha: 2026-06-01 20:05:13.450310
+Fecha: 2026-06-01 20:34:46.685914
 Archivo: DATOS3direcciones.TXT
 Registros archivo: 90
 Procesados: 90
@@ -13,290 +13,198 @@ TABLA LUGARES
 
 ID   LUGAR
 --------------------------------------------------
-8    10 Downing Street
-22   221B Baker Street
-9    Acropolis of Athens
-81   Alcatraz Island
-27   Amazon Rainforest
-85   Angkor Wat
-4    Apple Park
-37   Big Ben
-57   Brandenburg Gate
-14   Buckingham Palace
-51   Buckingham Palace Gardens
-30   Burj Khalifa
-67   Chichen Itza
-32   Christ the Redeemer
-28   CN Tower
-1    Colosseum
-71   Easter Island
+4    10 Downing Street
+11   221B Baker Street
+21   Acropolis of Athens
+57   Alcatraz Island
+30   Amazon Rainforest
+59   Angkor Wat
+2    Apple Park
+35   Big Ben
+45   Brandenburg Gate
+7    Buckingham Palace
+42   Buckingham Palace Gardens
+15   Burj Khalifa
+50   Chichen Itza
+16   Christ the Redeemer
+14   CN Tower
+17   Colosseum
+52   Easter Island
 33   Edinburgh Castle
-10   Eiffel Tower
-23   Golden Gate Bridge
-55   Golden Gate Park
-2    Googleplex
-77   Grand Canyon
-5    Grand Canyon National Park
-91   Great Barrier Reef
-24   Great Wall of China
-43   Hollywood Sign
-13   Hollywood Walk of Fame
-49   Kremlin
-63   Lake Titicaca
-7    Leaning Tower of Pisa
-45   Louvre Museum
-11   Machu Picchu
-17   Mount Everest
-47   Mount Fuji
-59   Mount Kilimanjaro
-29   Mount Rushmore
-79   Mount Vesuvius
-83   Neuschwanstein Castle
-15   Niagara Falls
-19   Petra
-39   Pyramids of Giza
-31   Red Square
-20   Shibuya Crossing
-16   Statue of Liberty
-65   Stonehenge
-35   Sydney Harbour Bridge
-26   Sydney Opera House
-3    Taj Mahal
-73   The Great Barrier Reef
-87   The Great Wall of China
-61   The Louvre Pyramid
-6    The White House
-25   Times Square
-18   Vatican City
-53   Vatican Museums
-41   Yellowstone National Park
-75   Yosemite National Park
+5    Eiffel Tower
+28   Golden Gate Bridge
+44   Golden Gate Park
+1    Googleplex
+55   Grand Canyon
+19   Grand Canyon National Park
+62   Great Barrier Reef
+12   Great Wall of China
+38   Hollywood Sign
+23   Hollywood Walk of Fame
+41   Kremlin
+48   Lake Titicaca
+20   Leaning Tower of Pisa
+39   Louvre Museum
+22   Machu Picchu
+25   Mount Everest
+40   Mount Fuji
+46   Mount Kilimanjaro
+31   Mount Rushmore
+56   Mount Vesuvius
+58   Neuschwanstein Castle
+24   Niagara Falls
+26   Petra
+36   Pyramids of Giza
+32   Red Square
+10   Shibuya Crossing
+8    Statue of Liberty
+49   Stonehenge
+34   Sydney Harbour Bridge
+13   Sydney Opera House
+18   Taj Mahal
+53   The Great Barrier Reef
+60   The Great Wall of China
+47   The Louvre Pyramid
+3    The White House
+29   Times Square
+9    Vatican City
+43   Vatican Museums
+37   Yellowstone National Park
+54   Yosemite National Park
 
 
 TABLA DIRECCIONES
 
 ID   CALLE                         NUM       CIUDAD/ESTADO                      PAIS
 ------------------------------------------------------------------------------------------------------------------------
-1    Piazza del Colosseo           1         00184 Roma RM                      Italy
-2    Amphitheatre Parkway          1600      Mountain View, CA 94043            USA
-3    Dharmapuri                              Forest Colony, Tajganj, Agra, Uttar Pradesh 282001India
-4    Apple Park Way                1         Cupertino, CA 95014                USA
-5    Arizona                                                                    USA
-6    Pennsylvania Ave NW           1600      Washington, DC 20500               USA
-7    Piazza del Duomo, Pisa PI     56126                                        Italy
-8    Downing St                    10        Westminster, London SW1A 2AA       UK
-9    Athens 105                    58                                           Greece
-10   Champ de Mars, Avenue Anatole France5         75007 Paris                        France
-11   Aguas Calientes               08680                                        Peru
-12   Infinite Loop                 1         Cupertino, CA 95014                USA
-13   Hollywood                               Los Angeles, CA 90028              USA
-14   Westminster                             London SW1A 1AA                    UK
-15   Niagara Falls                           NY                                 USA
-16   Liberty Island                          New York, NY 10004                 USA
-17   Everest Base Camp                                                          Nepal
-18   Vatican                                                                    
-19   Wadi Musa                                                                  Jordan
-20   Chome-2-1 Dogenzaka           2         Shibuya City, Tokyo 150-0043       Japan
-21   Machu Picchu                  08680                                        Peru
-22   Baker St                      221B      Marylebone, London NW1 6XE         UK
-23   Golden Gate Bridge                      San Francisco, CA                  USA
-24   Beijing                                                                    China
-25   Manhattan                               NY 10036                           USA
-26   Sydney NSW                    2000                                         Australia
-27   Amazon Rainforest                                                          South America
-28   Front St W                    301       Toronto, ON M5V 2T6                Canada
-29   Keystone                                SD 57751                           USA
-30   Sheikh Mohammed bin Rashid Blvd1         Dubai                              UAE
-31   Moscow                                                                     Russia
-32   Rio de Janeiro - RJ                                                        Brazil
+1    Amphitheatre Parkway          1600      Mountain View, CA 94043            USA
+2    Apple Park Way                1         Cupertino, CA 95014                USA
+3    Pennsylvania Ave NW           1600      Washington, DC 20500               USA
+4    Downing St                    10        Westminster, London SW1A 2AA       UK
+5    Champ de Mars, Avenue Anatole France5         75007 Paris                        France
+6    Infinite Loop                 1         Cupertino, CA 95014                USA
+7    Westminster                             London SW1A 1AA                    UK
+8    Liberty Island                          New York, NY 10004                 USA
+9    Vatican                                                                    
+10   Chome-2-1 Dogenzaka           2         Shibuya City, Tokyo 150-0043       Japan
+11   Baker St                      221B      Marylebone, London NW1 6XE         UK
+12   Beijing                                                                    China
+13   Sydney NSW                    2000                                         Australia
+14   Front St W                    301       Toronto, ON M5V 2T6                Canada
+15   Sheikh Mohammed bin Rashid Blvd1         Dubai                              UAE
+16   Rio de Janeiro - RJ                                                        Brazil
+17   Piazza del Colosseo           1         00184 Roma RM                      Italy
+18   Dharmapuri                              Forest Colony, Tajganj, Agra, Uttar Pradesh 282001India
+19   Arizona                                                                    USA
+20   Piazza del Duomo, Pisa PI     56126                                        Italy
+21   Athens 105                    58                                           Greece
+22   Aguas Calientes               08680                                        Peru
+23   Hollywood                               Los Angeles, CA 90028              USA
+24   Niagara Falls                           NY                                 USA
+25   Everest Base Camp                                                          Nepal
+26   Wadi Musa                                                                  Jordan
+27   Machu Picchu                  08680                                        Peru
+28   Golden Gate Bridge                      San Francisco, CA                  USA
+29   Manhattan                               NY 10036                           USA
+30   Amazon Rainforest                                                          South America
+31   Keystone                                SD 57751                           USA
+32   Moscow                                                                     Russia
 33   Castlehill                              Edinburgh EH1 2NG                  UK
-34   Piazza del Colosseo           1         00184 Roma RM                      Italy
-35   Sydney NSW                                                                 Australia
-36   Dharmapuri                              Forest Colony, Tajganj, Agra, Uttar Pradesh 282001India
-37   Westminster                             London SW1A 0AA                    UK
-38   Arizona                                                                    USA
-39   Al Haram                                Nazlet El-Semman, Al Haram, Giza GovernorateEgypt
-40   Piazza del Duomo, Pisa PI     56126                                        Italy
-41   Yellowstone National Park               WY 82190                           USA
-42   Athens 105                    58                                           Greece
-43   Los Angeles                             CA 90068                           USA
-44   Aguas Calientes               08680                                        Peru
-45   Rue de Rivoli, Paris          75001                                        France
-46   Hollywood                               Los Angeles, CA 90028              USA
-47   Kitayama                                Fujinomiya, Shizuoka 418-0112      Japan
-48   Niagara Falls                           NY                                 USA
-49   Moscow                                                                     Russia
-50   Everest Base Camp                                                          Nepal
-51   Buckingham Palace Road                  London SW1A 1AA                    UK
-52   Wadi Musa                                                                  Jordan
-53   Viale Vaticano, Roma RM       00165                                        Italy
-54   Machu Picchu                  08680                                        Peru
-55   San Francisco                           CA                                 USA
-56   Golden Gate Bridge                      San Francisco, CA                  USA
-57   Pariser Platz, Berlin         10117                                        Germany
-58   Manhattan                               NY 10036                           USA
-59   Kilimanjaro                                                                Tanzania
-60   Amazon Rainforest                                                          South America
-61   Rue de Rivoli, Paris          75001                                        France
-62   Keystone                                SD 57751                           USA
-63   Lake Titicaca                                                              
-64   Moscow                                                                     Russia
-65   Salisbury SP4                 7DE                                          UK
-66   Castlehill                              Edinburgh EH1 2NG                  UK
-67   Yucatan                                                                    Mexico
-68   Sydney NSW                                                                 Australia
-69   Cusco                         08002                                        Peru
-70   Westminster                             London SW1A 0AA                    UK
-71   Easter Island                           Valparaiso Region                  Chile
-72   Al Haram                                Nazlet El-Semman, Al Haram, Giza GovernorateEgypt
-73   Great Barrier Reef                      Queensland                         Australia
-74   Yellowstone National Park               WY 82190                           USA
-75   Yosemite National Park                  CA                                 USA
-76   Los Angeles                             CA 90068                           USA
-77   Grand Canyon National Park              Arizona                            USA
-78   Rue de Rivoli, Paris          75001                                        France
-79   Ottaviano                     80044     Metropolitan City of Naples        Italy
-80   Kitayama                                Fujinomiya, Shizuoka 418-0112      Japan
-81   San Francisco                           CA                                 USA
-82   Moscow                                                                     Russia
-83   Neuschwansteinstraße          20        87645 Schwangau                    Germany
-84   Buckingham Palace Road                  London SW1A 1AA                    UK
-85   Angkor Archaeological Park              Krong Siem Reap                    Cambodia
-86   Viale Vaticano, Roma RM       00165                                        Italy
-87   Beijing                                                                    China
-88   San Francisco                           CA                                 USA
-89   Grand Canyon National Park              Arizona                            USA
-90   Pariser Platz, Berlin         10117                                        Germany
-91   Great Barrier Reef                      Queensland                         Australia
-92   Kilimanjaro                                                                Tanzania
-93   Rue de Rivoli, Paris          75001                                        France
-94   Lake Titicaca                                                              
-95   Salisbury SP4                 7DE                                          UK
-96   Yucatan                                                                    Mexico
-97   Cusco                         08002                                        Peru
-98   Easter Island                           Valparaiso Region                  Chile
-99   Great Barrier Reef                      Queensland                         Australia
-100  Yosemite National Park                  CA                                 USA
-101  Grand Canyon National Park              Arizona                            USA
-102  Ottaviano                     80044     Metropolitan City of Naples        Italy
-103  San Francisco                           CA                                 USA
-104  Neuschwansteinstraße          20        87645 Schwangau                    Germany
-105  Angkor Archaeological Park              Krong Siem Reap                    Cambodia
-106  Beijing                                                                    China
-107  Grand Canyon National Park              Arizona                            USA
-108  Great Barrier Reef                      Queensland                         Australia
+34   Sydney NSW                                                                 Australia
+35   Westminster                             London SW1A 0AA                    UK
+36   Al Haram                                Nazlet El-Semman, Al Haram, Giza GovernorateEgypt
+37   Yellowstone National Park               WY 82190                           USA
+38   Los Angeles                             CA 90068                           USA
+39   Rue de Rivoli, Paris          75001                                        France
+40   Kitayama                                Fujinomiya, Shizuoka 418-0112      Japan
+41   Moscow                                                                     Russia
+42   Buckingham Palace Road                  London SW1A 1AA                    UK
+43   Viale Vaticano, Roma RM       00165                                        Italy
+44   San Francisco                           CA                                 USA
+45   Pariser Platz, Berlin         10117                                        Germany
+46   Kilimanjaro                                                                Tanzania
+47   Rue de Rivoli, Paris          75001                                        France
+48   Lake Titicaca                                                              
+49   Salisbury SP4                 7DE                                          UK
+50   Yucatan                                                                    Mexico
+51   Cusco                         08002                                        Peru
+52   Easter Island                           Valparaiso Region                  Chile
+53   Great Barrier Reef                      Queensland                         Australia
+54   Yosemite National Park                  CA                                 USA
+55   Grand Canyon National Park              Arizona                            USA
+56   Ottaviano                     80044     Metropolitan City of Naples        Italy
+57   San Francisco                           CA                                 USA
+58   Neuschwansteinstraße          20        87645 Schwangau                    Germany
+59   Angkor Archaeological Park              Krong Siem Reap                    Cambodia
+60   Beijing                                                                    China
+61   Grand Canyon National Park              Arizona                            USA
+62   Great Barrier Reef                      Queensland                         Australia
 
 
 TABLA GEOREFERENCIAS
 
 ID   LATITUD             LONGITUD
 ------------------------------------------------------------
-1    41.8902             12.4922
-2    37.422              -122.084
-3    27.1751             78.0421
-4    37.3328             -122.0059
-5    36.107              -112.113
-6    38.8977             -77.0365
-7    43.7229             10.3966
-8    51.5034             -0.1276
-9    37.9715             23.7266
-10   48.8584             2.2945
-11   -13.1631            -72.5450
-12   37.3317             -122.0307
-13   34.1016             -118.3414
-14   51.5014             -0.1419
-15   43.0812             -79.0663
-16   40.6892             -74.0445
-17   27.9881             86.9250
-18   41.9029             12.4534
-19   30.3285             35.4444
-20   35.6591             139.7005
-21   -13.1631            -72.5450
-22   51.5238             -0.1588
-23   37.8199             -122.4783
-24   40.4319             116.5704
-25   40.7580             -73.9855
-26   -33.8568            151.2153
-27   -3.4653             -62.2159
-28   43.6426             -79.3871
-29   43.8791             -103.4591
-30   25.1972             55.2744
-31   55.7539             37.6208
-32   -22.9519            -43.2106
+1    37.422              -122.084
+2    37.3328             -122.0059
+3    38.8977             -77.0365
+4    51.5034             -0.1276
+5    48.8584             2.2945
+6    37.3317             -122.0307
+7    51.5014             -0.1419
+8    40.6892             -74.0445
+9    41.9029             12.4534
+10   35.6591             139.7005
+11   51.5238             -0.1588
+12   40.4319             116.5704
+13   -33.8568            151.2153
+14   43.6426             -79.3871
+15   25.1972             55.2744
+16   -22.9519            -43.2106
+17   41.8902             12.4922
+18   27.1751             78.0421
+19   36.107              -112.113
+20   43.7229             10.3966
+21   37.9715             23.7266
+22   -13.1631            -72.5450
+23   34.1016             -118.3414
+24   43.0812             -79.0663
+25   27.9881             86.9250
+26   30.3285             35.4444
+27   -13.1631            -72.5450
+28   37.8199             -122.4783
+29   40.7580             -73.9855
+30   -3.4653             -62.2159
+31   43.8791             -103.4591
+32   55.7539             37.6208
 33   55.9486             -3.1999
-34   41.8902             12.4922
-35   -33.8523            151.2108
-36   27.1751             78.0421
-37   51.5007             -0.1246
-38   36.107              -112.113
-39   29.9792             31.1342
-40   43.7229             10.3966
-41   44.4279             -110.5885
-42   37.9715             23.7266
-43   34.1341             -118.3215
-44   -13.1631            -72.5450
-45   48.8606             2.3376
-46   34.1016             -118.3414
-47   35.3606             138.7274
-48   43.0812             -79.0663
-49   55.7517             37.6178
-50   27.9881             86.9250
-51   51.5014             -0.1419
-52   30.3285             35.4444
-53   41.9062             12.4544
-54   -13.1631            -72.5450
-55   37.7694             -122.4862
-56   37.8199             -122.4783
-57   52.5163             13.3777
-58   40.7580             -73.9855
-59   -3.0674             37.3556
-60   -3.4653             -62.2159
-61   48.8606             2.3376
-62   43.8791             -103.4591
-63   -15.9254            -69.3356
-64   55.7539             37.6208
-65   51.1789             -1.8262
-66   55.9486             -3.1999
-67   20.6843             -88.5678
-68   -33.8523            151.2108
-69   -13.1631            -72.5450
-70   51.5007             -0.1246
-71   -27.1212            -109.3665
-72   29.9792             31.1342
-73   -18.2871            147.6992
-74   44.4279             -110.5885
-75   37.8651             -119.5383
-76   34.1341             -118.3215
-77   36.1069             -112.1129
-78   48.8606             2.3376
-79   40.8219             14.4283
-80   35.3606             138.7274
-81   37.8267             -122.4233
-82   55.7517             37.6178
-83   47.5576             10.7498
-84   51.5014             -0.1419
-85   13.4125             103.8660
-86   41.9062             12.4544
-87   40.4319             116.5704
-88   37.7694             -122.4862
-89   36.107              -112.113
-90   52.5163             13.3777
-91   -18.2871            147.6992
-92   -3.0674             37.3556
-93   48.8606             2.3376
-94   -15.9254            -69.3356
-95   51.1789             -1.8262
-96   20.6843             -88.5678
-97   -13.1631            -72.5450
-98   -27.1212            -109.3665
-99   -18.2871            147.6992
-100  37.8651             -119.5383
-101  36.1069             -112.1129
-102  40.8219             14.4283
-103  37.8267             -122.4233
-104  47.5576             10.7498
-105  13.4125             103.8660
-106  40.4319             116.5704
-107  36.107              -112.113
-108  -18.2871            147.6992
+34   -33.8523            151.2108
+35   51.5007             -0.1246
+36   29.9792             31.1342
+37   44.4279             -110.5885
+38   34.1341             -118.3215
+39   48.8606             2.3376
+40   35.3606             138.7274
+41   55.7517             37.6178
+42   51.5014             -0.1419
+43   41.9062             12.4544
+44   37.7694             -122.4862
+45   52.5163             13.3777
+46   -3.0674             37.3556
+47   48.8606             2.3376
+48   -15.9254            -69.3356
+49   51.1789             -1.8262
+50   20.6843             -88.5678
+51   -13.1631            -72.5450
+52   -27.1212            -109.3665
+53   -18.2871            147.6992
+54   37.8651             -119.5383
+55   36.1069             -112.1129
+56   40.8219             14.4283
+57   37.8267             -122.4233
+58   47.5576             10.7498
+59   13.4125             103.8660
+60   40.4319             116.5704
+61   36.107              -112.113
+62   -18.2871            147.6992
 
